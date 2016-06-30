@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MinesWeeper The Poop</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_play">Play</string>
+    <string name="resume_game">Resume game</string>
+    <string name="reload_game">Refresh game</string>
+    <string name="pause_game">Pause game</string>
+    <string name="exit_game">Exit game</string>
+    <string name="info">This game is very simple! you are walking in the park and should find all the poops before you press one of them! you can mark a poop with a long click!!!be aware! Guau Guau </string>
+    <string name="seasons">Season</string>
+    <string name="level">level</string>
+    <string name="mine">Poops</string>
+    <string name="title_activity_borrar">borrar</string>
+    <string name="hard">HARD</string>
+    <string name="medium">MEDIUM</string>
+    <string name="easy">EASY</string>
+    <string name="jugar">Jugar</string>
+    <string name="infob">Records</string>
+    <string name="salir">Salir</string>
+    <string name="sonido">Sonido</string>
+    <string name="titulo">Minesweeper</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="easy_level">Fácil</string>
+    <string name="medium_level">Medio</string>
+    <string name="hard_level">Difícil</string>
+    <string name="LEADERBOARD_ID">CgkImJKK99cREAIQAA</string>
+
+</resources>

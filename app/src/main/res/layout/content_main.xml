@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/inicio"
+    tools:context=".Inicio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:id="@+id/main">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/gridLayout"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonPlay"
+            android:background="@drawable/mybtn"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/jugar"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonInfo"
+            android:background="@drawable/mybtn"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/gridLayout"
+            android:layout_toEndOf="@+id/gridLayout"
+            android:text="@string/infob"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonSonido"
+            android:background="@drawable/mybtn"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/gridLayout"
+            android:layout_toEndOf="@+id/gridLayout"
+            android:text="@string/sonido"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonExit"
+            android:background="@drawable/mybtn"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/gridLayout"
+            android:layout_alignEnd="@+id/gridLayout"
+            android:text="@string/salir"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/title_ice"
+        android:layout_above="@+id/gridLayout" />
+
+</RelativeLayout>

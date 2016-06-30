@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.example.alvaro.avoidthepoop.Finish"
+    android:background="@drawable/sky"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewFinishTitle"
+        android:src="@drawable/finishtitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewState"
+        android:textColor="#0f2ef7"
+        android:textStyle="bold|italic"
+        android:textSize="@android:dimen/app_icon_size"
+        android:textAlignment="center"
+        android:text="some text"
+        android:layout_below="@+id/imageViewFinishTitle"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewState"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="@android:dimen/notification_large_icon_height"
+            android:layout_height="@android:dimen/notification_large_icon_width"
+            android:id="@+id/imageViewNewGame"
+            android:src="@mipmap/ic_refresh"
+            android:layout_below="@+id/textViewState"
+            android:layout_toRightOf="@+id/imageViewExit"
+            android:layout_toEndOf="@+id/imageViewExit" />
+
+        <ImageView
+            android:layout_width="@android:dimen/notification_large_icon_height"
+            android:layout_height="@android:dimen/notification_large_icon_width"
+            android:id="@+id/imageViewExit"
+            android:src="@mipmap/ic_exit"
+            android:layout_marginLeft="42dp"
+            android:layout_marginStart="42dp"
+            android:layout_below="@+id/textViewState"
+            android:layout_alignLeft="@+id/textViewState"
+            android:layout_alignStart="@+id/textViewState" />
+    </LinearLayout>
+</LinearLayout>

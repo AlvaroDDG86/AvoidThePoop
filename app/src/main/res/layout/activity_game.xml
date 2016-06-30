@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    tools:context="com.example.alvaro.avoidthepoop.Game"
+    android:id="@+id/maingame">
+
+    <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+             app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewRefresh"
+            android:src="@mipmap/ic_refresh"
+            android:layout_gravity="center"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewResume"
+            android:src="@mipmap/ic_play"
+            android:layout_gravity="center"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewPause"
+            android:src="@mipmap/ic_pause"
+            android:layout_gravity="center"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewExit"
+            android:src="@mipmap/ic_exit"
+            android:layout_gravity="center"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relativeLayoutInfo"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" 00'"
+                    android:textSize="30dp"
+                    android:id="@+id/textViewTime"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageViewHour"
+                    android:src="@drawable/hourglass"
+                    android:contentDescription="hourglass"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/textViewTime"
+                    android:layout_toStartOf="@+id/textViewTime" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_game" />
+ />
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Levels">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+    <string-array name="tipeLevel">
+        <item>8</item>
+        <item>10</item>
+        <item>14</item>
+    </string-array>
+    <string-array name="Poops">
+        <item>Brown</item>
+        <item>Pink</item>
+    </string-array>
+    <string-array name="tipePoops">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

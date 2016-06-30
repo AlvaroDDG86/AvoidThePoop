@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".SelectGameFragment"
+    android:gravity="center"
+    android:background="@drawable/sky">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewExitF"
+        android:src="@mipmap/ic_exit"
+        android:layout_below="@+id/buttonHard"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/easy_level"
+        android:id="@+id/buttonEasy"
+        android:layout_marginTop="157dp"
+        android:background="@drawable/mybtn"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="50dp"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/medium_level"
+        android:id="@+id/buttonMedium"
+        android:background="@drawable/mybtn"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="50dp"
+        android:padding="10dp"
+        android:layout_below="@+id/buttonEasy"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hard_level"
+        android:id="@+id/buttonHard"
+        android:background="@drawable/mybtn"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="50dp"
+        android:padding="10dp"
+        android:layout_below="@+id/buttonMedium"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp" />
+
+</RelativeLayout>
