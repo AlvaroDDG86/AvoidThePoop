@@ -1,9 +1,6 @@
 package com.example.alvaro.avoidthepoop;
 
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,25 +11,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FinishFragment.OnFragmentInteractionListener} interface
+ * {@link InfoFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class FinishFragment extends Fragment {
-    //Variables para la clase
-    ImageView imageViewNewGame;
-    ImageView imageViewExit;
-    String condition;
-    TextView textViewState;
-    int time;
-    ImageView title;
+public class InfoFragment extends Fragment {
+    ImageView exit;
+    TextView ayuda;
 
     private OnFragmentInteractionListener mListener;
 
-    public FinishFragment() {
+    public InfoFragment() {
         // Required empty public constructor
     }
 
@@ -41,45 +35,16 @@ public class FinishFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_finish, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_info, container, false);
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "Sketch 3D.otf");
-
-        textViewState=(TextView)view.findViewById(R.id.textViewState);
-        textViewState.setTypeface(font);
-
-        title = (ImageView)view.findViewById(R.id.imageViewFinishTitle);
-
-        condition = getArguments().getString("condition");
-        time = getArguments().getInt("time")-1;
-
-        if(condition.equalsIgnoreCase("win")){
-            title.setImageResource(R.drawable.ganaste);
-            textViewState.setText(R.string.ganar+" "+time+" segundos!!!");
-        }else if(condition.equalsIgnoreCase("error")){
-            title.setImageResource(R.drawable.fallaste);
-            textViewState.setText(R.string.fallar);
-        }else{
-            title.setImageResource(R.drawable.perdiste);
-            textViewState.setText(R.string.perder);
-        }
-
-        imageViewNewGame=(ImageView)view.findViewById(R.id.imageViewNewGame);
-        imageViewNewGame.setOnClickListener(new View.OnClickListener() {
+        exit = (ImageView)view.findViewById(R.id.imageViewExitInfo);
+        ayuda = (TextView) view.findViewById(R.id.textViewAyuda);
+        ayuda.setTypeface(font);
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().finish();
-                startActivity(getActivity().getIntent());
-            }
-        });
-        imageViewExit=(ImageView)view.findViewById(R.id.imageViewExit);
-        imageViewExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().beginTransaction().remove(FinishFragment.this).commit();
-                Game.player.stop();
-                getActivity().finish();
-                Intent intent=new Intent(getActivity().getApplicationContext(), Main.class);
-                startActivity(intent);
+                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.pop_enter, R.animator.pop_exit).remove(InfoFragment.this).commit();
             }
         });
         return view;
@@ -114,7 +79,7 @@ public class FinishFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

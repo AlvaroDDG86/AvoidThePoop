@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alvaro.avoidthepoop.InfoFragment"
+    android:background="@drawable/sky">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewExitInfo"
+        android:src="@mipmap/ic_exit"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/ayuda"
+            android:id="@+id/textViewAyuda"
+            android:textColor="@color/colorPinkDark"
+            android:padding="20dp"
+            android:textAlignment="gravity"
+            android:background="@color/colorYellowTransparent"
+        android:layout_below="@+id/imageViewExitInfo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_gravity="center"
+        android:src="@drawable/example"
+        android:layout_below="@+id/textViewAyuda"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

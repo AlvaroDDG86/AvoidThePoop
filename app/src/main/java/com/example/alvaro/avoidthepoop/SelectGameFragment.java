@@ -31,8 +31,7 @@ public class SelectGameFragment extends Fragment{
     ImageView imageViewExit;
     int level;
     View view2;
-    Bundle bundle;
-    boolean music, effects;
+    boolean music;
 
 
     private OnFragmentInteractionListener mListener;
@@ -155,4 +154,6 @@ public class SelectGameFragment extends Fragment{
         intentGame.putExtra("level",level);
         startActivity(intentGame);
     }
+
+
 }

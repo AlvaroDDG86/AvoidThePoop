@@ -410,6 +410,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
     private void finishGame(String condition){
         FinishFragment finishFragment = new FinishFragment();
         bundle.putString("condition", condition);
+        bundle.putInt("time",count);
         finishFragment.setArguments(bundle);
         T.cancel();
         imageViewExit.setEnabled(false);

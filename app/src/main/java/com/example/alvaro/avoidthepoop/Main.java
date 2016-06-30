@@ -18,7 +18,7 @@ import android.widget.Button;
 
 import java.util.Set;
 
-public class Main extends AppCompatActivity implements SelectGameFragment.OnFragmentInteractionListener{
+public class Main extends AppCompatActivity implements SelectGameFragment.OnFragmentInteractionListener,InfoFragment.OnFragmentInteractionListener{
     //Variables para los botones de la pantalla principal
     Button buttonPlay;
     Button buttonInfo;
@@ -79,7 +79,10 @@ public class Main extends AppCompatActivity implements SelectGameFragment.OnFrag
                 if(music){
                     clickSound.start();
                 }
-
+                InfoFragment infoFragment = new InfoFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.animator.pop_enter, R.animator.pop_exit).add(R.id.main,infoFragment).commit();
             }
         });
 

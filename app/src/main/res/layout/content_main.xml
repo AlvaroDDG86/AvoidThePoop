@@ -5,8 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/inicio"
-    tools:context=".Inicio"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
@@ -84,7 +82,7 @@
         android:id="@+id/imageViewTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/title_ice"
+        android:src="@drawable/titulo"
         android:layout_above="@+id/gridLayout" />
 
 </RelativeLayout>
