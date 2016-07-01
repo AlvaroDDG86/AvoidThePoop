@@ -22,6 +22,8 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Collections;
 import java.util.Random;
 import java.util.ArrayList;
@@ -65,9 +67,9 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
     int[][] game;
     int[][] showed;
     //MediaPlayer para el sonido principal de la aplicación
-    public static MediaPlayer player;
+    public MediaPlayer player;
     //MediaPlayer para el sonido de los botones
-    public static MediaPlayer clickSound;
+    public MediaPlayer clickSound;
     //Vibrator para hacer que vibre cuando se programe
     public static Vibrator vibrator;
     //creamos un nuevo objeto de SharedPreferences, pero esta vez para contener las variables con los mejores tiempos
@@ -81,11 +83,14 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
     String position;
     Bundle bundle;
     Typeface face;
+    boolean isPaused;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        isPaused = false;
 
         bundle = new Bundle();
 
@@ -177,6 +182,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
                 if(music){
                     clickSound.start();
                 }
+                isPaused=false;
                 player.start();
                 gridLayout.setVisibility(View.VISIBLE);
                 pause.setVisibility(View.INVISIBLE);
@@ -191,6 +197,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
                 if(music){
                     clickSound.start();
                 }
+                isPaused=true;
                 textViewFinds.setText("");
                 gridLayout.setVisibility(View.INVISIBLE);
                 pause.setVisibility(View.VISIBLE);
@@ -346,10 +353,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
             }
         }else{
             String condition="error";
-            if(music) {
-                MediaPlayer fart = MediaPlayer.create(Game.this, R.raw.fart);
-                fart.start();
-            }
             finishGame(condition);
         }
         return true;
@@ -361,10 +364,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
         if(imagenClicked.getTag()!=null) {
             String condition="lose";
             vibrator.vibrate(1000);
-            if(music) {
-                MediaPlayer fart = MediaPlayer.create(Game.this, R.raw.fart);
-                fart.start();
-            }
             finishGame(condition);
         }else{
             if(music){
@@ -413,6 +412,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
         bundle.putInt("time",count);
         finishFragment.setArguments(bundle);
         T.cancel();
+        player.stop();
         imageViewExit.setEnabled(false);
         imageViewRefresh.setEnabled(false);
         imageViewResume.setEnabled(false);
@@ -508,9 +508,9 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
     //Método para tratar la salida del juego
      public void exit(){
          new AlertDialog.Builder(this)
-                 .setMessage("Are you sure you want to exit?")
+                 .setMessage("¿Quieres salir?")
                  .setCancelable(false)
-                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                      public void onClick(DialogInterface dialog, int id) {
                          Intent intent=new Intent(getApplicationContext(),Main.class);
                          startActivity(intent);
@@ -525,13 +525,15 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
     //Método para tratar el reload del juego
     public void reloadGame(){
         new AlertDialog.Builder(this)
-                .setMessage("Do you want to reload the game?")
+                .setMessage("¿Quieres reiniciar el juego?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        Intent intent=new Intent(getApplicationContext(),Game.class);
+                        intent.putExtra("level",level);
+                        startActivity(intent);
                         player.stop();
                         finish();
-                        startActivity(getIntent());
                     }
                 })
                 .setNegativeButton("No", null)
@@ -540,11 +542,18 @@ public class Game extends AppCompatActivity implements View.OnClickListener,View
 
     @Override
     protected void onStop() {
-        player.pause();
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-        editor.putBoolean("music", music);
-        editor.commit();
         super.onStop();
+        player.pause();
+        T.cancel();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onStart();
+        if(!isPaused){
+            player.start();
+            contador();
+        }
     }
 
 

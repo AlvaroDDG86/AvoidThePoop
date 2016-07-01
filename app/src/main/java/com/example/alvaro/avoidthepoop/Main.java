@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Set;
 
@@ -62,6 +63,7 @@ public class Main extends AppCompatActivity implements SelectGameFragment.OnFrag
                 if(music){
                     clickSound.start();
                 }
+                /*enableButtons(false);*/
                 SelectGameFragment selectGameFragment = new SelectGameFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -79,10 +81,11 @@ public class Main extends AppCompatActivity implements SelectGameFragment.OnFrag
                 if(music){
                     clickSound.start();
                 }
+                /*enableButtons(false);*/
                 InfoFragment infoFragment = new InfoFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.animator.pop_enter, R.animator.pop_exit).add(R.id.main,infoFragment).commit();
+                fragmentTransaction.setCustomAnimations(R.animator.enter, R.animator.exit).add(R.id.main,infoFragment).commit();
             }
         });
 
@@ -135,7 +138,7 @@ public class Main extends AppCompatActivity implements SelectGameFragment.OnFrag
     @Override
     public void onBackPressed()
     {
-        player.stop();
+        player.pause();
         super.onBackPressed();  // optional depending on your needs
     }
 
@@ -144,19 +147,19 @@ public class Main extends AppCompatActivity implements SelectGameFragment.OnFrag
     @Override
     protected void onStop() {
         player.pause();
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-        editor.putBoolean("music", music);
-        editor.commit();
         super.onStop();
     }
+
+    @Override
+    protected void onStart() {
+        if(music)player.start();
+        super.onResume();
+    }
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
-
-
-
-
 
 }

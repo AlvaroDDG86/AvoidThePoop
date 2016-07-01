@@ -6,5 +6,5 @@
         android:valueFrom="-2800"
         android:valueTo="0"
         android:interpolator="@android:anim/decelerate_interpolator"
-        android:duration="@android:integer/status_bar_notification_info_maxnum"/>
+        android:duration="@android:integer/config_shortAnimTime"/>
 </set>

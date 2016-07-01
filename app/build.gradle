@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
     defaultConfig {
-        applicationId "com.example.alvaro.avoidthepoop"
+        applicationId 'com.adgprogramador.buscaminasperruno'
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1

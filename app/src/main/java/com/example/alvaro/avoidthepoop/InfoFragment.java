@@ -1,10 +1,12 @@
 package com.example.alvaro.avoidthepoop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +23,11 @@ import org.w3c.dom.Text;
  * to handle interaction events.
  */
 public class InfoFragment extends Fragment {
-    ImageView exit;
+    ImageView exit,share,start;
     TextView ayuda;
+    TextView enlace;
+    TextView cancion;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -35,16 +40,40 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View view = inflater.inflate(R.layout.fragment_info, container, false);
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "Sketch 3D.otf");
+        View view = inflater.inflate(R.layout.fragment_info, container, false);
+        enlace = (TextView) view.findViewById(R.id.textViewSobreMi);
+        enlace.setMovementMethod(LinkMovementMethod.getInstance());
+        enlace.setTypeface(font);
+        cancion = (TextView) view.findViewById(R.id.textViewCancion);
+        cancion.setTypeface(font);
         exit = (ImageView)view.findViewById(R.id.imageViewExitInfo);
+        share = (ImageView)view.findViewById(R.id.imageViewShare);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String share = "https://play.google.com/store/apps/details?id=com.adgprogramador.eurodollarrates";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Buscaminas perruno");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
+                startActivity(Intent.createChooser(sharingIntent, "Compartir mediante:"));
+            }
+        });
+        start = (ImageView)view.findViewById(R.id.imageViewStart);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.king.farmheroessupersaga"));
+                startActivity(browserIntent);
+            }
+        });
         ayuda = (TextView) view.findViewById(R.id.textViewAyuda);
         ayuda.setTypeface(font);
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.pop_enter, R.animator.pop_exit).remove(InfoFragment.this).commit();
+                getFragmentManager().beginTransaction().setCustomAnimations(R.animator.enter, R.animator.exit).remove(InfoFragment.this).commit();
             }
         });
         return view;

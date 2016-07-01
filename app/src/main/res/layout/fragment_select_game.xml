@@ -5,7 +5,8 @@
     android:orientation="horizontal"
     tools:context=".SelectGameFragment"
     android:gravity="center"
-    android:background="@drawable/sky">
+    android:background="@drawable/sky"
+    android:clickable="true">
 
     <!-- TODO: Update blank fragment layout -->
 

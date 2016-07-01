@@ -13,6 +13,9 @@
         Ten en cuenta que si marcas una casilla y no hay perro, pierdes, y si descubres una casilla en la que sí hay, también pierdes. Suerte! </string>
     <string name="perder">UAAA, has perdido!, ahí había un perro...!!!</string>
     <string name="fallar">ups...parece que ahí no habia ningún perro...</string>
-    <string name="ganar">Has encontrado todos los perros en </string>
+    <string name="ganar">Has encontrado todos los perros, bien hecho</string>
+    <string name="musica">The Fat Cat</string>
+    <string name="sobre">Desarrollado por</string>
+    <string name="web"><a href="http://www.adgprogramador.com">http://www.adgprogramador.com</a></string>
 
 </resources>

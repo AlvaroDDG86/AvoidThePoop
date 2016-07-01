@@ -54,7 +54,7 @@ public class FinishFragment extends Fragment {
 
         if(condition.equalsIgnoreCase("win")){
             title.setImageResource(R.drawable.ganaste);
-            textViewState.setText(R.string.ganar+" "+time+" segundos!!!");
+            textViewState.setText(R.string.ganar);
         }else if(condition.equalsIgnoreCase("error")){
             title.setImageResource(R.drawable.fallaste);
             textViewState.setText(R.string.fallar);
@@ -76,7 +76,6 @@ public class FinishFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().remove(FinishFragment.this).commit();
-                Game.player.stop();
                 getActivity().finish();
                 Intent intent=new Intent(getActivity().getApplicationContext(), Main.class);
                 startActivity(intent);

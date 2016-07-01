@@ -148,12 +148,13 @@ public class SelectGameFragment extends Fragment{
         if(music){
             clickSound.start();
         }
-        getFragmentManager().beginTransaction().remove(SelectGameFragment.this).commit();
         getActivity().finish();
+        getFragmentManager().beginTransaction().remove(SelectGameFragment.this).commit();
         Intent intentGame= new Intent(view2.getContext(),Game.class);
         intentGame.putExtra("level",level);
         startActivity(intentGame);
     }
+
 
 
 }
